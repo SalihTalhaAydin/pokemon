@@ -1,5 +1,9 @@
 // Your initial data here
+
+
+
 // Write your code below data.
+
 
 let data = {
   abilities: [
@@ -152,3 +156,80 @@ let data = {
   ],
   weight: 69,
 };
+
+function getHeight(){
+  return ;
+}
+
+function getWeight(){
+  return data.weight.toString();
+}
+
+function getName(){
+  return data.name;
+}
+
+function checkAbilitiesDataType(){
+  return typeof data.abilities === "object";
+}
+
+function printLastAbilityName(){
+  console.log(data.abilities[data.abilities.length - 1].ability.name);
+}
+
+function putLastAbilityToAbilities(){
+  data.abilities.push(data.abilities[data.abilities.length - 1]);
+  console.log(data.abilities);
+}
+
+printNamesOfTypes =  () => data.types.forEach(el => console.log(el.type.name));
+printBaseStats =  () => data.stats.forEach(el => console.log(el.base_stat));
+getBaseStatsAbove47 = () => {
+  let array = [];
+  data.stats.filter(el => el.base_stat> 47).forEach(el => array.push(el.base_stat));
+  return array;
+}
+getBaseStatsAbove47FirstTwo = () => getBaseStatsAbove47().slice(0, 2);
+changeBaseStatsFirstValue = () => {
+  let array = [];
+  data.stats.forEach(el => array.push(el.base_stat));
+  array.splice(0, 1, "sal");
+  return array;
+}
+
+printKeysAndValues = () =>{
+  for(let [key, value] of Object.entries(data)) {
+    console.log(key, value);
+  }
+}
+
+
+let pokemonHeight = getHeight();
+let pokemonWeight = getWeight();
+let pokemonBMI = Number(pokemonWeight) / Math.pow(Number(pokemonHeight), 2);
+let pokemonName = getName();
+let nameLength = pokemonName.length;
+let nameUpperCase = pokemonName.toUpperCase();
+let isNameContainsBulba = pokemonName.includes("bulba");
+let firstTwoCharsOfName = pokemonName.slice(0, 2);
+let lastTwoCharsOfName = pokemonName.slice(-2)
+let firstAndLastTwoCharsOfName = [firstTwoCharsOfName.concat(lastTwoCharsOfName)];
+
+console.log(
+changeBaseStatsFirstValue()
+);
+
+
+const avatar = document.querySelector('#pokemon-avatar');
+const pok_name = document.querySelector('#pokemon-name');
+const info = document.querySelector('#info');
+const name = data.name;
+const height = data.height;
+const weight = data.weight;
+const url = data.sprites.front_default;
+avatar.src = url;
+pok_name.innerHTML = name;
+info.innerHTML = `
+  <span> Height ${height}</span> -
+  <span> Weight ${weight}</span>
+`;
